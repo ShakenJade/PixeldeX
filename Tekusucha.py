@@ -1,6 +1,6 @@
 """
 07/01/2020
-1er version de l'objet Tekusuchā signifiant litteralement texture.
+1e version de l'objet Tekusuchā signifiant litteralement texture.
 deve:Mahli , Eva
 L'objet Tekusuchā est un objet image.
 Dans sa version n*1 il est recommander de l'utiliser pour des images a tendances
@@ -14,8 +14,8 @@ class Fph0701Tekusucha:
             self.acc , self.firstMetaDa = Fpx0401loadImages(acc,[sc,sc])
             if a == 0 or a == False or a == "none" and type(a) == int:
                 self.acc = self.acc
-                self.secMetaDa = ["succes"]
-            elif type(a) == int:
+                self.secMetaDa = ["none"]
+            elif type(a) == int and a != 0:
                 self.acc = pygame.transform.rotate(self.acc,a)
                 self.secMetaDa = ["succes"]
             else:
@@ -24,6 +24,47 @@ class Fph0701Tekusucha:
         elif type(sc) == list:
             self.acc , self.firstMetaDa = Fpx0401loadImages(acc,sc)
             self.secMetaDa = ["none"]
+        else:
+            self.firstMetaDa = ["fail","erreur au niveau du type de valeurs pour la taille de l'image","ne mettez en type de valeur que des int et des list"]
+            print("impossible de charger l'image")
+            self.acc = "error"
+            self.secMetaDa = ["none"]
+        self.metaD = {"first":self.firstMetaDa,"seco":self.secMetaDa}
+"""
+08/01/2020
+1e version de l'objet Tekusuchā signifiant litteralement texture.
+deve:Mahli , Eva
+L'objet Tekusuchā est un objet image.
+Dans sa version n*2 il est recommander de l'utiliser pour des images a tendances
+statiques avant tout utilisation concernant des sprites nous recommendons une
+etude plus approfondit sur les perdormances.
+Cet objet fait parti de la branche gpu
+NB: il y a un bug avec la rotation de pygame nous esperons 
+"""
+class Fph0801Tekusucha:
+    def __init__(self,acc,sc,a):
+        if type(sc) == int:
+            self.acc , self.firstMetaDa = Fpx0401loadImages(acc,[sc,sc])
+            if a == 0 or a == False or a == "none" and type(a) == int:
+                self.acc = self.acc
+                self.secMetaDa = ["none"]
+            elif type(a) == int and a != 0:
+                self.acc = pygame.transform.rotate(self.acc,a)
+                self.secMetaDa = ["succes"]
+            else:
+                print("erreur non fatale")
+                self.secMetaDa = ["fail","type de la variable de rotation invalide"]
+        elif type(sc) == list:
+            self.acc , self.firstMetaDa = Fpx0401loadImages(acc,sc)
+            if a == 0 or a == False or a == "none" and type(a) == int:
+                self.acc = self.acc
+                self.secMetaDa = ["none"]
+            elif type(a) == int and a != 0:
+                self.acc = pygame.transform.rotate(self.acc,a)
+                self.secMetaDa = ["succes"]
+            else:
+                print("erreur non fatale")
+                self.secMetaDa = ["fail","type de la variable de rotation invalide"]
         else:
             self.firstMetaDa = ["fail","erreur au niveau du type de valeurs pour la taille de l'image","ne mettez en type de valeur que des int et des list"]
             print("impossible de charger l'image")
