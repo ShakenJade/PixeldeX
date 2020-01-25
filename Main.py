@@ -87,6 +87,17 @@ def Fpx2401Saundoefekuto(name,,vX,vY):
     except AttributeError:
         MetaD = ["succes","attribut error"]
 """
+24/01/2020
+premiere version de l'init audio.
+deve : Mahli,Cloe
+concu initialement pour l'architecture general c'est fonction est une fonction
+de gestion des ressources fichiers audio, qui ne prend que tres peux sur le cpu et le
+gpu.
+Elle a pour but d'initialiser correctement le mixer pygame.
+"""
+def Fpx2401SaundoefekutoInit():
+    pygame.mixer.init(frequency=44000, size=-16,channels=2, buffer=4096)
+"""
 17/01/2020
 premiere version de variablesStatic
 deve : Mahli
